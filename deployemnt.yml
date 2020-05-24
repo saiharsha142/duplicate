@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dumplicate-deployment
+  labels:
+    type: duplicate
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      type: duplicate
+  template:
+    metadata:
+       name: duplicate-pod
+       labels:
+         type: duplicate
+    spec:
+      containers:
+       - name: duplicacte-container
+         image: duplicate-2
+         command : ["python3 duplicate.py"]
+         args: ["/opt"]                            
